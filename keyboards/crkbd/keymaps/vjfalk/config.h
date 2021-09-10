@@ -48,6 +48,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define LEADER_PER_KEY_TIMING
 #define LEADER_TIMEOUT 300
 #define LEADER_NO_TIMEOUT
+#define DEBOUNCE 10
+
 
 #ifdef RGBLIGHT_ENABLE
     #undef RGBLED_NUM
