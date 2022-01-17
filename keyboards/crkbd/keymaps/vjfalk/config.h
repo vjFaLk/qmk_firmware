@@ -40,6 +40,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define MASTER_RIGHT
 // #define EE_HANDS
 
+#define SPLIT_WPM_ENABLE
+#define SPLIT_OLED_ENABLE
+
 #define USE_SERIAL_PD2
 
 #define TAPPING_FORCE_HOLD
@@ -48,8 +51,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define LEADER_PER_KEY_TIMING
 #define LEADER_TIMEOUT 300
 #define LEADER_NO_TIMEOUT
-#define DEBOUNCE 10
-
 
 #ifdef RGBLIGHT_ENABLE
     #undef RGBLED_NUM
@@ -106,11 +107,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DISABLE_RGB_MATRIX_SOLID_REACTIVE_WIDE
 #define DISABLE_RGB_MATRIX_SOLID_REACTIVE_CROSS
 #define DISABLE_RGB_MATRIX_SOLID_REACTIVE_NEXUS
+#define DISABLE_RGB_MATRIX_SOLID_REACTIVE_MULTINEXUS
 #define DISABLE_RGB_MATRIX_SPLASH
 #define DISABLE_RGB_MATRIX_MULTISPLASH
 #define DISABLE_RGB_MATRIX_SOLID_SPLASH
 #define DISABLE_RGB_MATRIX_SOLID_MULTISPLASH
-
 #endif
 
 #define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
