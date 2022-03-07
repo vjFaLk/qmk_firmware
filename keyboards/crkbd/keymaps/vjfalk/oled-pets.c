@@ -521,11 +521,12 @@ oled_rotation_t oled_init_user(oled_rotation_t const rotation) {
 	else { return OLED_ROTATION_270; }
 }
 
-void oled_task_user(void) {
+bool oled_task_user(void) {
 	if (is_keyboard_master()) { render_bongocat();
     } else {
         current_wpm   = get_current_wpm();
         led_usb_state = host_keyboard_led_state();
         render_luna(0, 13);
     }
+	return false;
 }
