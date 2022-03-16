@@ -70,13 +70,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   )
 };
 
-// oled_rotation_t oled_init_user(oled_rotation_t rotation) { return OLED_ROTATION_270; }
-
-#    define L_BASE 0
-#    define L_LOWER 2
-#    define L_RAISE 4
-#    define L_ADJUST 8
-
 
 LEADER_EXTERNS();
 
@@ -98,4 +91,12 @@ void matrix_scan_user(void) {
             }
         }
     }
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (record->event.pressed) {
+        extern uint32_t tap_timer;
+        tap_timer = timer_read32();
+    }
+      return true;
 }
