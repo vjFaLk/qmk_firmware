@@ -1,26 +1,12 @@
-/*
-This is the c configuration file for the keymap
+// copied from users/manna-harbour_miryoku/config.h
+// Copyright 2019 Manna Harbour
+// https://github.com/manna-harbour/miryoku
+// generated -*- buffer-read-only: t -*-
 
-Copyright 2012 Jun Wako <wakojun@gmail.com>
-Copyright 2015 Jack Humbert
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+// This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 2 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-//#define USE_MATRIX_I2C
 
 // Saving some space
 #define NO_ACTION_MACRO
@@ -33,24 +19,31 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define NO_PRINT
 #endif // !NO_PRINT
 
-
-/* Select hand configuration */
-
-#define MASTER_LEFT
-// #define MASTER_RIGHT
-// #define EE_HANDS
-
-#define SPLIT_WPM_ENABLE
 #define SPLIT_OLED_ENABLE
-
 #define USE_SERIAL_PD2
-
-#define TAPPING_FORCE_HOLD
-#define TAPPING_TERM 100
 
 #define LEADER_PER_KEY_TIMING
 #define LEADER_TIMEOUT 300
 #define LEADER_NO_TIMEOUT
+
+// default but used in macros
+#undef TAPPING_TERM
+#define TAPPING_TERM 220
+
+#define MIRYOKU_CLIPBOARD_WIN
+// Prevent normal rollover on alphas from accidentally triggering mods.
+#define IGNORE_MOD_TAP_INTERRUPT
+
+// Enable rapid switch from tap to hold, disables double tap hold auto-repeat.
+#define TAPPING_FORCE_HOLD
+
+// Auto Shift
+#define NO_AUTO_SHIFT_ALPHA
+#define AUTO_SHIFT_TIMEOUT TAPPING_TERM
+#define AUTO_SHIFT_NO_SETUP
+
+// Recommended for heavy chording.
+#define QMK_KEYS_PER_SCAN 4
 
 // Mouse key speed and acceleration.
 #undef MOUSEKEY_DELAY
@@ -64,15 +57,27 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #undef MOUSEKEY_TIME_TO_MAX
 #define MOUSEKEY_TIME_TO_MAX    64
 
-#ifdef RGBLIGHT_ENABLE
-    #undef RGBLED_NUM
-    #define RGBLIGHT_ANIMATIONS
-    #define RGBLED_NUM 27
-    #define RGBLIGHT_LIMIT_VAL 120
-    #define RGBLIGHT_HUE_STEP 10
-    #define RGBLIGHT_SAT_STEP 17
-    #define RGBLIGHT_VAL_STEP 17
-#endif
+
+// copied from layouts/community/split_3x6_3/manna-harbour_miryoku/config.h
+// Copyright 2019 Manna Harbour
+// https://github.com/manna-harbour/miryoku
+// generated -*- buffer-read-only: t -*-
+
+// This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 2 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+#define LAYOUT_miryoku(\
+       K00,   K01,   K02,   K03,   K04,          K05,   K06,   K07,   K08,   K09,\
+       K10,   K11,   K12,   K13,   K14,          K15,   K16,   K17,   K18,   K19,\
+       K20,   K21,   K22,   K23,   K24,          K25,   K26,   K27,   K28,   K29,\
+       N30,   N31,   K32,   K33,   K34,          K35,   K36,   K37,   N38,   N39\
+)\
+LAYOUT_split_3x6_3(\
+KC_LEAD, K00,   K01,   K02,   K03,   K04,          K05,   K06,   K07,   K08,   K09,   TG(NAV),\
+KC_NO, K10,   K11,   K12,   K13,   K14,          K15,   K16,   K17,   K18,   K19,   TG(GAME),\
+KC_NO, K20,   K21,   K22,   K23,   K24,          K25,   K26,   K27,   K28,   K29,   KC_NO,\
+                     K32,   K33,   K34,          K35,   K36,   K37\
+)
+
 
 #ifdef RGB_MATRIX_ENABLE
 #   define RGB_MATRIX_KEYPRESSES // reacts to keypresses
@@ -125,10 +130,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define ENABLE_RGB_MATRIX_SOLID_REACTIVE_MULTICROSS // Hue & value pulse the same column and row of multiple key hits then fades value out
 // #define ENABLE_RGB_MATRIX_SOLID_REACTIVE_NEXUS      // Hue & value pulse away on the same column and row of a single key hit then fades value out
 // #define ENABLE_RGB_MATRIX_SOLID_REACTIVE_MULTINEXUS // Hue & value pulse away on the same column and row of multiple key hits then fades value out
-#define ENABLE_RGB_MATRIX_SPLASH              // Full gradient & value pulse away from a single key hit then fades value out
+// #define ENABLE_RGB_MATRIX_SPLASH              // Full gradient & value pulse away from a single key hit then fades value out
 // #define ENABLE_RGB_MATRIX_MULTISPLASH         // Full gradient & value pulse away from multiple key hits then fades value out
 // #define ENABLE_RGB_MATRIX_SOLID_SPLASH        // Hue & value pulse away from a single key hit then fades value out
 // #define ENABLE_RGB_MATRIX_SOLID_MULTISPLASH   // Hue & value pulse away from multiple key hits then fades value out
 #endif
-
-#define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
